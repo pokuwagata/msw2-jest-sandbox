@@ -42,6 +42,4 @@ test("test", async () => {
   await userEvent.click(screen.getByText("submit"));
 
   expect(mockfn).toHaveBeenCalledWith(inputData);
-
-  screen.debug();
 });

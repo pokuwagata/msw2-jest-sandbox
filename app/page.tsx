@@ -1,10 +1,15 @@
 "use client";
 
-import { FormEvent } from "react";
+import { useState } from "react";
 
 export default function Home() {
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    const body = new FormData(event.currentTarget);
+  const [name, setName] = useState("");
+  const [age, setAge] = useState(0);
+
+  async function handleSubmit() {
+    const body = new FormData();
+    body.append("name", name);
+    body.append("age", age.toString());
 
     await fetch("http://localhost:3000/api/test", {
       method: "POST",
@@ -16,15 +21,33 @@ export default function Home() {
     <main>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">name</label>
-          <input id="name" name="name" type="text" />
+          <label>
+            name
+            <input
+              id="name"
+              name="name"
+              type="text"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+          </label>
         </div>
         <div>
-          <label htmlFor="age">age</label>
-          <input id="age" name="age" type="number" />
+          <label>
+            age
+            <input
+              id="age"
+              name="age"
+              type="number"
+              onChange={(e) => {
+                setAge(Number(e.target.value));
+              }}
+            />
+          </label>
         </div>
-        <input type="submit" value="submit" />
       </form>
+      <button onClick={handleSubmit}>submit</button>
     </main>
   );
 }
