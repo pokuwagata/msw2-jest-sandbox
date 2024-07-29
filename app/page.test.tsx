@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import { server } from "../mocks/node";
-import Home from "@/app/page";
 import { userEvent } from "@testing-library/user-event";
 import { http, HttpResponse } from "msw";
+import { server } from "../mocks/node";
+import Home from "@/app/page";
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
