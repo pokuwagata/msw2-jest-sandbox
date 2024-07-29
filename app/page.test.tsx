@@ -36,7 +36,10 @@ test("test", async () => {
 
   render(<Home />);
 
-  await userEvent.click(screen.getByText("request"));
+  await userEvent.type(screen.getByLabelText("name"), inputData.name);
+  await userEvent.type(screen.getByLabelText("age"), inputData.age);
+
+  await userEvent.click(screen.getByText("submit"));
 
   expect(mockfn).toHaveBeenCalledWith(inputData);
 
