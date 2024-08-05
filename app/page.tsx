@@ -19,12 +19,11 @@ export default function Home() {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div>
           <label>
             name
             <input
-              id="name"
               name="name"
               type="text"
               onChange={(e) => {
@@ -37,7 +36,6 @@ export default function Home() {
           <label>
             age
             <input
-              id="age"
               name="age"
               type="number"
               onChange={(e) => {
